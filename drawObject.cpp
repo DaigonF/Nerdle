@@ -93,6 +93,9 @@ void drawChar(char character, const Point& p, SDL_Plotter& plotter, const Color&
         case '*':
             file.open("multiply.dat");
             break;
+        case '<':
+            file.open("back.dat");
+            break;
         default:
             cout << "character not found" << endl;
             break;

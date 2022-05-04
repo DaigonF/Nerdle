@@ -198,21 +198,22 @@ int main(int argc, char ** argv)
         }
 
 
-
         //Update Tiles
         if(turn < 6){
-        for (int y = 0; y < tilesY; y++)
-        {
-            for (int x = 0; x < tilesX; x++)
+            for (int y = 0; y < tilesY; y++)
             {
-                tiles[x][y].draw(plotter, black);
+                for (int x = 0; x < tilesX; x++)
+                {
+                    tiles[x][y].draw(plotter, black);
+                }
             }
         }
-        }
+        else{
             for (int x = 0; x < tilesX; x++)
-            {
-                tiles[x][5].draw(plotter, black);
-            }
+                {
+                    tiles[x][5].draw(plotter, black);
+                }
+        }
 
         drawOutline(point,tileWidth,tileHeight,plotter,red);
         point = tiles[currTileX][currTileY].getLocation();

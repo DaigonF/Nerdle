@@ -199,7 +199,8 @@ int main(int argc, char ** argv)
 
 
         //Update Tiles
-        if(turn < 6){
+        if(turn < 6)
+        {
             for (int y = 0; y < tilesY; y++)
             {
                 for (int x = 0; x < tilesX; x++)
@@ -208,7 +209,8 @@ int main(int argc, char ** argv)
                 }
             }
         }
-        else{
+        else
+        {
             for (int x = 0; x < tilesX; x++)
                 {
                     tiles[x][5].draw(plotter, black);

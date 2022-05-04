@@ -42,15 +42,21 @@ int main(int argc, char ** argv)
     char BACKSPACE = 5;
     bool resetInput = true;
     SDL_Plotter plotter(800,800);
-    int turn=0;
     int tilesX = 8;
     int tilesY = 6;
     int tileWidth = 50;
     int tileHeight = 50;
-    int tileXLocation = 225;
+    int tileXLocation = 150;
     int tileYLocation = 50;
     int currTileX = 0;
     int currTileY = 0;
+
+    int keyXlocation = 150;
+    int keyYlocation = 600;
+    int keyXnum = 8;
+    int keyYnum = 2;
+    char keyIn [16] = {'0','1','2','3','4','5','6','7','8','9','+','-','*','/','=','<'};
+
     bool endOfIndex = false;
     bool win = false;
 
@@ -66,6 +72,8 @@ int main(int argc, char ** argv)
     Color yellow(194,168,0);
 
     Tile tiles[tilesX][tilesY];
+    Tile keyboard [keyXnum] [keyYnum];
+    Point Keyp(keyXlocation,keyYlocation);
     Point point(tileXLocation,tileYLocation);
 
     srand(time(0));
@@ -87,6 +95,29 @@ int main(int argc, char ** argv)
         point.y += tileHeight+10;
         point.x = tileXLocation;
     }
+
+    for (int y= 0; y < keyYnum; y++)
+    {
+        for (int x= 0; x < keyXnum; x++)
+        {
+            keyboard [x][y].setLocation(Keyp);
+            keyboard [x][y].setColor(lightBrown);
+            keyboard [x][y].setWidth(tileWidth);
+            keyboard [x][y].setHeight(tileHeight);
+            keyboard [x][y].setLetter(keyIn[x+(y*8)]);
+            Keyp.x += tileWidth+10;
+        }
+        Keyp.y += tileHeight+10;
+        Keyp.x = tileXLocation;
+    }
+
+    for (int y = 0; y < keyYnum; y++)
+            {
+                for (int x = 0; x < keyXnum; x++)
+                {
+                    keyboard[x][y].draw(plotter, black);
+                }
+            }
 
     generateEquation(master);
 
